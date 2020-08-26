@@ -3,6 +3,17 @@ PyTorch wrapper for image classification
 
 [![PyPI version](https://badge.fury.io/py/pooraka.svg)](https://badge.fury.io/py/pooraka) [![Downloads](https://pepy.tech/badge/pooraka)](https://pepy.tech/project/pooraka)
 
+## Supported:
+
+ - Calculating Params and FLOPs
+ - Calculate mean std
+ - Get mean std (for CIFAR-10, CIFAR-100, and ImageNet)
+ - Cross entropy label smooth
+ - Get learning rate
+ - Avgrage meter (including accuracy)
+ - Create exp dir
+ - Save checkpoint
+
 ## Install
 
 The library can be installed with pip:
