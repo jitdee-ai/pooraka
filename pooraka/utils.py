@@ -2,6 +2,7 @@ import os
 import shutil
 import torch
 import torch.nn as nn
+import os.path
 
 class CrossEntropyLabelSmooth(nn.Module):
     def __init__(self, num_classes, epsilon):
