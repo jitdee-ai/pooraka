@@ -24,7 +24,7 @@ def get_learning_rate(optimizer):
         lr +=[ param_group['lr'] ]
     return lr
 
-class AvgrageMeter(object):
+class AverageMeter(object):
     def __init__(self):
         self.reset()
     
