@@ -1,0 +1,12 @@
+site_name: Pooraka
+
+site_description: 'PyTorch wrapper for image classification'
+repo_name: 'jitdee-ai/pooraka'
+repo_url: 'https://github.com/jitdee-ai/pooraka'
+nav:
+  - index.md
+
+theme:
+  name: material
+  palette:
+    primary: teal
