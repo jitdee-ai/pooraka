@@ -2,11 +2,11 @@ import torch.nn as nn
 import torch
 import numpy as np
 
-def get_flops_params(model, input=(32, 32)):
-    flops, params = get_model_complexity_info(model, input, as_strings=True, print_per_layer_stat=False)
+def get_flops_params(model, input=(32, 32), units='GMac'):
+    flops, params = get_model_complexity_info(model, input, print_per_layer_stat=False, as_strings=True, units=units)
     return flops, params
 
-def get_model_complexity_info(model, input_res, print_per_layer_stat=True, as_strings=True):
+def get_model_complexity_info(model, input_res, print_per_layer_stat=True, as_strings=True, units='GMac'):
     assert type(input_res) is tuple
     assert len(input_res) == 2
     batch = torch.FloatTensor(1, 3, *input_res)
@@ -21,7 +21,7 @@ def get_model_complexity_info(model, input_res, print_per_layer_stat=True, as_st
     flops_model.stop_flops_count()
 
     if as_strings:
-        return flops_to_string(flops_count), params_to_string(params_count)
+        return flops_to_string(flops_count, units), params_to_string(params_count)
 
     return flops_count, params_count
 
@@ -66,8 +66,8 @@ def print_model_with_flops(model, units='GMac', precision=3):
     def flops_repr(self):
         accumulated_flops_cost = self.accumulate_flops()
         return ', '.join([flops_to_string(accumulated_flops_cost, units=units, precision=precision),
-                          '{:.3%} MACs'.format(accumulated_flops_cost / total_flops),
-                          self.original_extra_repr()])
+                '{:.3%} MACs'.format(accumulated_flops_cost / total_flops),
+                self.original_extra_repr()])
 
     def add_extra_repr(m):
         m.accumulate_flops = accumulate_flops.__get__(m)
