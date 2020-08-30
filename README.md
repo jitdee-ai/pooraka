@@ -2,7 +2,7 @@
 PyTorch wrapper for image classification
 
 [![PyPI version](https://badge.fury.io/py/pooraka.svg)](https://badge.fury.io/py/pooraka) [![Downloads](https://pepy.tech/badge/pooraka)](https://pepy.tech/project/pooraka)
-
+![PyPI Release](https://github.com/jitdee-ai/pooraka/workflows/PyPI%20Release/badge.svg)
 ## Supported:
 
  - Calculating Params and FLOPs
