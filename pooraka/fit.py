@@ -2,8 +2,9 @@ import torch
 from pooraka.trainer import train_cifar, train_imagenet
 from pooraka.inference import infer_cifar, infer_imagenet
 from pooraka.dataset import get_cifar_queue
-from pooraka.utils import save_checkpoint
+from pooraka.utils import save_checkpoint, CrossEntropyLabelSmooth
 import torch.nn as nn
+import logging
 
 class learning:
     def __init__(self, args, model, save_model, logging):
@@ -43,7 +44,7 @@ class learning:
                                                     self.criterion, 
                                                     self.optimizer, 
                                                     logging_mode=self.logging)
-                valid_acc, valid_obj = inference.infer_cifar(self.args, 
+                valid_acc, valid_obj = infer_cifar(self.args, 
                                                     self.valid_queue, 
                                                     self.model, 
                                                     self.criterion, 
@@ -63,6 +64,6 @@ class learning:
                         'optimizer' : self.optimizer.state_dict(),
                     }, is_best, self.args.save)
             if self.logging:
-                logging.info('best_acc1 %f', best_acc1)
+                logging.info('best_acc1 %f', self.best_acc1)
 
 

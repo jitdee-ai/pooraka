@@ -50,9 +50,6 @@ def _data_transforms_cifar10(args):
   if args.cutout:
     train_transform.transforms.append(Cutout(16))
 
-  if args.duplicates > 1:
-    train_transform = multi_transform(train_transform)
-
   valid_transform = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize(CIFAR_MEAN, CIFAR_STD),
