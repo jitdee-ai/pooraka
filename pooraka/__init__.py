@@ -4,3 +4,4 @@ from .meanstd import *
 from .fit import learning
 from .utils import CrossEntropyLabelSmooth , get_learning_rate, create_exp_dir, save_checkpoint
 from .autoaugment import *
+from .mix import *
